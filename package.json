@@ -8,7 +8,7 @@
   "scripts": {
     "transpile": "tsc",
     "clean": "rimraf dist",
-    "build": "eco 'Building.... (not doing actually something)'",
+    "build": "webpack-dev-server --hot",
     "watch": "tsc --watch",
     "start": "nodemon",
     "service:start": "pm2 start ecosystem.config.js",
@@ -63,7 +63,8 @@
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4",
     "tsconfig-paths": "^4.1.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "webpack-dev-server": "^4.11.1"
   },
   "engines": {
     "node": ">= 12.0.0",
