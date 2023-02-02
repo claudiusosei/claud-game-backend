@@ -8,7 +8,7 @@
   "scripts": {
     "transpile": "tsc",
     "clean": "rimraf dist",
-    "build": "NODE_ENV=production run-s prettify clean transpile",
+    "build": "eco 'Building.... (not doing actually something)'",
     "watch": "tsc --watch",
     "start": "nodemon",
     "service:start": "pm2 start ecosystem.config.js",
