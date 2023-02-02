@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - env
+      - export tag=latest
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - cd $folder_name
+      - docker build -t $ecr_repo_uri:$tag .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - $(aws ecr get-login --no-include-email)
+      - docker push $ecr_repo_uri:$tag
+      - cd ..
+      - echo Writing image definitions file...
+      - printf '[{"name":"%s","imageUri":"%s"}]' $container_name $ecr_repo_uri:$tag > imagedefinitions.json
+      - pwd; ls -al; cat imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
