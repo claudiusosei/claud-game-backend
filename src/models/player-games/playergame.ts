@@ -5,6 +5,7 @@ export interface ClientProfileOptional {
   age: string;
   gender: string;
   handedness: string,
+  experience: string,
   questionnaire: string,
   level_1_attemps: string,
   level_1_Q1_ans: string,
@@ -54,6 +55,9 @@ const playeGameSchema = new mongoose.Schema({
     type: String
   },
   handedness: {
+    type: String
+  },
+  experience: {
     type: String
   },
   questionnaire: {
