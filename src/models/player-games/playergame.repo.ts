@@ -18,11 +18,8 @@ const fetchAllRecords = async () => {
   return fetchAllList;
 }
 
-const update = async (id: string, data: any) => {
-
-  console.log(" main id", id )
-  console.log(" main data ", data )
-  return PlayeGamesModel.findOneAndUpdate({ playerID: id }, { ...data });
+const update = async (data: any) => {
+  return PlayeGamesModel.findOneAndUpdate({ playerID: data?.playerID }, { ...data });
 };
 
 export default {
