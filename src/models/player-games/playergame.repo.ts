@@ -18,7 +18,12 @@ const fetchAllRecords = async () => {
   return fetchAllList;
 }
 
+const update = async (id: string, data: any) => {
+  return PlayeGamesModel.findOneAndUpdate({ playerID: id }, { ...data });
+};
+
 export default {
   createNewPlayGame,
-  fetchAllRecords
+  fetchAllRecords,
+  update
 };

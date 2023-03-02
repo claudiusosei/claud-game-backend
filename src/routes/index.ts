@@ -8,7 +8,5 @@ const router = Router();
 
 export default function (app: any) {
   app.use('/api/v1', router);
-  router.use(auth);
-  router.use(client);
   router.use(playerGames)
 }

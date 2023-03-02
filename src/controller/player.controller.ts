@@ -55,3 +55,15 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
         });
     }
 };
+
+export const updatePlayerDetails = async (req: any, res: any) => {
+    try {
+        const updateDetails = await playergameRepo.update(req.body.playerID, req.body)
+        return res.status(200).send({ statue: 200, "message": "your recored updated successfully!!!" });
+
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message ? error.message : 'Request failed'
+        });
+    }
+}
