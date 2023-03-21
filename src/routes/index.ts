@@ -1,7 +1,4 @@
-import { isAuthenticated } from '@/middlewares/auth';
 import { Router } from 'express';
-import auth from './auth.route';
-import client from './client.route';
 import playerGames from './playergames.route';
 
 const router = Router();
