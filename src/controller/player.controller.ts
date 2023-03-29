@@ -48,7 +48,7 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
         //   status: status,
         //   creatorUserId: email
         // });
-        return res.status(200).send(fetchAllRecors);
+        return res.status(200).send({ count: fetchAllRecors?.length });
     } catch (error) {
         return res.status(400).send({
             message: error.message ? error.message : 'Request failed'

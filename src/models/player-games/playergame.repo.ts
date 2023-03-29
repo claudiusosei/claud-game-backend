@@ -1,5 +1,5 @@
 import { PlayerGamesRequestParameters } from '@/types/dto/playergames.dto';
-import { ClientProfileOptional, PlayeGamesModel } from './playergame';
+import { PlayeGamesModel } from './playergame';
 
 const createNewPlayGame = async (data: PlayerGamesRequestParameters) => {
   const newPlayerResponse = new PlayeGamesModel({
