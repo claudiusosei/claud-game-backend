@@ -33,6 +33,16 @@ export const createNewPlayRoom = async (req: Request, res: Response) => {
 export const fetchAllPlayersList = async (req: Request, res: Response) => {
     try {
         const fetchAllRecors = await playergameRepo.fetchAllRecords()
+        var playerID = 0;
+        if (fetchAllRecors?.length > 0) {
+            playerID = parseInt(fetchAllRecors[fetchAllRecors?.length - 1].playerID) + 1;
+        } else {
+            playerID = 1;
+        }
+        var requestParameter = {
+            playerID: playerID
+        }
+        const createNewPlayer = await playergameRepo.createNewPlayGame(requestParameter);
         // const validateResponse = validateCreateClientProfileRequest(req);
         // if (!validateResponse.isValid) {
         //   return res.status(400).send({
@@ -48,7 +58,7 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
         //   status: status,
         //   creatorUserId: email
         // });
-        return res.status(200).send({ count: fetchAllRecors?.length });
+        return res.status(200).send({ playerID: playerID });
     } catch (error) {
         return res.status(400).send({
             message: error.message ? error.message : 'Request failed'
@@ -59,6 +69,7 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
 export const updatePlayerDetails = async (req: any, res: any) => {
     try {
         var data: any = Object.keys(req.body)
+        console.log(" datat ", data)
         const updateDetails = await playergameRepo.update(JSON.parse(data))
         return res.status(200).send({ statue: 200, "message": "your recored updated successfully!!!" });
 

@@ -1,7 +1,7 @@
 import { PlayerGamesRequestParameters } from '@/types/dto/playergames.dto';
 import { PlayeGamesModel } from './playergame';
 
-const createNewPlayGame = async (data: PlayerGamesRequestParameters) => {
+const createNewPlayGame = async (data: any) => {
   const newPlayerResponse = new PlayeGamesModel({
     ...data,
     createdAt: new Date(),
@@ -19,7 +19,7 @@ const fetchAllRecords = async () => {
 }
 
 const update = async (data: any) => {
-  return PlayeGamesModel.findOneAndUpdate({ playerID: data?.playerID }, { ...data });
+  return PlayeGamesModel.findOneAndUpdate({ playerID: parseInt(data?.playerID) }, { ...data });
 };
 
 export default {
