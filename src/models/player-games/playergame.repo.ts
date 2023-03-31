@@ -19,7 +19,8 @@ const fetchAllRecords = async () => {
 }
 
 const update = async (data: any) => {
-  return PlayeGamesModel.findOneAndUpdate({ playerID: parseInt(data?.playerID) }, { ...data });
+  console.log("data?.playerID ",parseInt(data?.playerID))
+  return PlayeGamesModel.findOneAndUpdate({ playerID: data?.playerID }, { ...data });
 };
 
 export default {

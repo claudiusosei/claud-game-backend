@@ -40,7 +40,7 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
             playerID = 1;
         }
         var requestParameter = {
-            playerID: playerID
+            playerID: playerID.toString()
         }
         const createNewPlayer = await playergameRepo.createNewPlayGame(requestParameter);
         // const validateResponse = validateCreateClientProfileRequest(req);
@@ -58,7 +58,7 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
         //   status: status,
         //   creatorUserId: email
         // });
-        return res.status(200).send({ playerID: playerID });
+        return res.status(200).send({ playerID: playerID.toString() });
     } catch (error) {
         return res.status(400).send({
             message: error.message ? error.message : 'Request failed'
