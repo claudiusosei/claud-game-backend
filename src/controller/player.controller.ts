@@ -69,7 +69,6 @@ export const fetchAllPlayersList = async (req: Request, res: Response) => {
 export const updatePlayerDetails = async (req: any, res: any) => {
     try {
         var data: any = Object.keys(req.body)
-        console.log(" datat ", data)
         const updateDetails = await playergameRepo.update(JSON.parse(data))
         return res.status(200).send({ statue: 200, "message": "your recored updated successfully!!!" });
 
